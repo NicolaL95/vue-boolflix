@@ -5,7 +5,12 @@
       <button v-on:click="getURL()" type="button">Click me!</button>
     </div>
     <div class="container">
-      <div class="movie" v-for="movie in movies" :key="movie.id"></div>
+      <div class="movie" v-for="movie in movies" :key="movie.id">
+        <p class="title">{{ movie.title }}</p>
+        <p class="original_title">{{ movie.original_title }}</p>
+        <p class="original_language">{{ movie.original_language }}</p>
+        <p class="vote_average">{{ movie.vote_average }}</p>
+      </div>
     </div>
   </div>
 </template>
