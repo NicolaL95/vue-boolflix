@@ -1,8 +1,12 @@
 <template>
   <div id="main_container">
-    <div class="input"></div>
-    <input v-model="query" type="text" />
-    <button type="button">Click me!</button>
+    <div class="input">
+      <input v-model="customQuery" type="text" />
+      <button v-on:click="getURL()" type="button">Click me!</button>
+    </div>
+    <div class="container">
+      <div class="movie" v-for="movie in movies" :key="movie.id"></div>
+    </div>
   </div>
 </template>
 
@@ -13,14 +17,20 @@ export default {
     return {
       customQuery: "",
       movies: [],
-      API_URL_SM:
-        "https://api.themoviedb.org/3/search/movie?api_key=fd4723f70e60dc27b6383adc8e7700ec&query=&language=en-US&page=1&include_adult=false",
     };
   },
-  mounted() {
-    axios.get(this.API_URL_SM).then((r) => {
-      this.movies = r.data.response;
-    });
+  methods: {
+    getURL() {
+      const API_URL =
+        "https://api.themoviedb.org/3/search/movie?api_key=fd4723f70e60dc27b6383adc8e7700ec&query=" +
+        this.customQuery +
+        "&language=en-US&page=1&include_adult=false";
+      console.log(API_URL);
+      axios.get(API_URL).then((r) => {
+        console.log(r.data.results);
+        this.movies = r.data.results;
+      });
+    },
   },
 };
 </script>
