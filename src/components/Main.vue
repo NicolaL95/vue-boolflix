@@ -31,13 +31,18 @@ export default {
   },
   methods: {
     getURL() {
-      const API_URL =
+      const API_URLF =
         "https://api.themoviedb.org/3/search/movie?api_key=fd4723f70e60dc27b6383adc8e7700ec&query=" +
         this.customQuery +
         "&language=en-US&page=1&include_adult=false";
-      axios.get(API_URL).then((r) => {
-        console.log(r.data.results);
-        this.movies = r.data.results;
+      const API_URLT =
+        "https://api.themoviedb.org/3/search/tv?api_key=fd4723f70e60dc27b6383adc8e7700ec&query=" +
+        this.customQuery +
+        "&language=en-US&page=1&include_adult=false";
+      axios.all([axios.get(API_URLF), axios.get(API_URLT)]).then((r) => {
+        console.log(r[0].data.results, r[1].data.results);
+        this.movies = r[0].data.results && r[1].data.results;
+        console.log(this.movies);
       });
     },
   },

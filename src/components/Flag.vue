@@ -10,7 +10,6 @@ export default {
   components: {
     CountryFlag,
   },
-  data() {},
   props: {
     selCountry: String,
   },
