@@ -8,7 +8,7 @@
       <div class="movie" v-for="movie in movies" :key="movie.id">
         <p class="title">{{ movie.title }}</p>
         <p class="original_title">{{ movie.original_title }}</p>
-        <Flag></Flag>
+        <Flag :selCountry="movie.original_language" />
         <p class="original_language">{{ movie.original_language }}</p>
         <p class="vote_average">{{ movie.vote_average }}</p>
       </div>
