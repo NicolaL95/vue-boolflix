@@ -20,7 +20,7 @@
         <img
           :src="'https://image.tmdb.org/t/p/w342' + multimedia.backdrop_path"
         />
-        <Star></Star>
+        <Star :votes="multimedia.vote_average"></Star>
       </div>
 
       <div v-else class="tv_container">
@@ -56,6 +56,7 @@ export default {
   methods: {
     /* get two Apis and merge them in an array  */
     getURL() {
+      this.multimedias = [];
       const API_URLF =
         "https://api.themoviedb.org/3/search/movie?api_key=fd4723f70e60dc27b6383adc8e7700ec&query=" +
         this.customQuery;
