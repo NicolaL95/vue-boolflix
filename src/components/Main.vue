@@ -20,7 +20,9 @@
         <img
           :src="'https://image.tmdb.org/t/p/w342' + multimedia.backdrop_path"
         />
+        <Star></Star>
       </div>
+
       <div v-else class="tv_container">
         <h1>SERIE TV</h1>
         <p class="name">{{ multimedia.title }}</p>
@@ -39,9 +41,11 @@
 <script>
 import axios from "axios";
 import Flag from "./Flag.vue";
+import Star from "./Star.vue";
 export default {
   components: {
     Flag,
+    Star,
   },
   data() {
     return {
@@ -58,7 +62,6 @@ export default {
       const API_URLT =
         "https://api.themoviedb.org/3/search/tv?api_key=fd4723f70e60dc27b6383adc8e7700ec&query=" +
         this.customQuery;
-      console.log(API_URLF, API_URLT);
       axios.all([axios.get(API_URLF), axios.get(API_URLT)]).then((r) => {
         /* set properties to specify type of content and add to array multimedias */
         r[0].data.results.forEach((element) => {

@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <Main></Main>
+    <font-awesome-icon icon="user-secret" />
+    <gb-flag code="fr" size="small" />
   </div>
 </template>
 

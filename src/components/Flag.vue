@@ -1,15 +1,11 @@
 <template>
   <div>
-    <country-flag v-bind:country="selCountry" size="normal" />
+    <img :src="require('../assets/flag/' + selCountry + '.png')" alt="" />
   </div>
 </template>
 
 <script>
-import CountryFlag from "vue-country-flag";
 export default {
-  components: {
-    CountryFlag,
-  },
   props: {
     selCountry: String,
   },
