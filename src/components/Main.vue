@@ -1,10 +1,5 @@
 <template>
   <div id="main_container">
-    <div class="input">
-      <input v-model="customQuery" type="text" />
-      <button v-on:click="getURL()" type="button">Click me!</button>
-    </div>
-
     <div
       class="multimedia"
       v-for="multimedia in multimedias"
@@ -40,6 +35,7 @@
 
 <script>
 import axios from "axios";
+/* import Header from "./Header.vue"; */
 import Flag from "./Flag.vue";
 import Star from "./Star.vue";
 export default {
@@ -53,16 +49,18 @@ export default {
       multimedias: [],
     };
   },
-  methods: {
+  watch: {
     /* get two Apis and merge them in an array  */
-    getURL() {
+    getAPI: function (val) {
+      console.log(val);
       this.multimedias = [];
+      console.log("ciao");
       const API_URLF =
         "https://api.themoviedb.org/3/search/movie?api_key=fd4723f70e60dc27b6383adc8e7700ec&query=" +
-        this.customQuery;
+        val;
       const API_URLT =
         "https://api.themoviedb.org/3/search/tv?api_key=fd4723f70e60dc27b6383adc8e7700ec&query=" +
-        this.customQuery;
+        val;
       axios.all([axios.get(API_URLF), axios.get(API_URLT)]).then((r) => {
         /* set properties to specify type of content and add to array multimedias */
         r[0].data.results.forEach((element) => {
@@ -75,10 +73,21 @@ export default {
         });
       });
       console.log(this.multimedias);
+      //call your method here
     },
   },
+  props: {
+    getAPI: String,
+  },
+  mounted() {
+    this.customQuery = this.getAPI;
+  },
+  methods: {},
 };
 </script>
 
-<style>
+<style lang="scss">
+#main_container {
+  background-color: #434343;
+}
 </style>
