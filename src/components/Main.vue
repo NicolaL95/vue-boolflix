@@ -17,6 +17,9 @@
         <Flag :selCountry="multimedia.original_language" />
         <p class="original_language">{{ multimedia.original_language }}</p>
         <p class="vote_average">{{ multimedia.vote_average }}</p>
+        <img
+          :src="'https://image.tmdb.org/t/p/w342' + multimedia.backdrop_path"
+        />
       </div>
       <div v-else class="tv_container">
         <h1>SERIE TV</h1>
@@ -25,6 +28,9 @@
         <Flag :selCountry="multimedia.original_language" />
         <p class="original_language">{{ multimedia.original_language }}</p>
         <p class="vote_average">{{ multimedia.vote_average }}</p>
+        <img
+          :src="'https://image.tmdb.org/t/p/w342' + multimedia.backdrop_path"
+        />
       </div>
     </div>
   </div>
@@ -64,6 +70,7 @@ export default {
           this.multimedias.push(element);
         });
       });
+      console.log(this.multimedias);
     },
   },
 };
