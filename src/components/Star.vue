@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <div id="stars">
-      <i class="fas fa-star" v-for="vote in convStar" :key="vote"> </i>
-      <i class="far fa-star" v-for="vote in leftStar" :key="vote"></i>
-    </div>
+  <div id="stars">
+    <i class="fas fa-star star_color" v-for="vote in convStar" :key="vote"> </i>
+    <i class="far fa-star star_color" v-for="vote in leftStar" :key="vote"></i>
   </div>
 </template>
 
@@ -16,7 +14,7 @@ export default {
     };
   },
   props: {
-    votes: String,
+    votes: Number,
   },
   mounted() {
     this.convStar = Math.ceil(this.votes / 2);
@@ -30,5 +28,5 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 </style>

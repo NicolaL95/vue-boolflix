@@ -1,6 +1,10 @@
 <template>
-  <div>
-    <img :src="require('../assets/flag/' + selCountry + '.png')" alt="" />
+  <div id="flag_type">
+    <img
+      :src="require('../assets/flag/' + selCountry + '.png')"
+      @error="selCountry = 'en'"
+      alt=""
+    />
   </div>
 </template>
 

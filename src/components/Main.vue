@@ -12,6 +12,7 @@
         :imgSrc="multimedia.backdrop_path"
         :titleTv="multimedia.name"
         :titleTvO="multimedia.original_name"
+        :desc="multimedia.overview"
       />
     </div>
   </div>
@@ -75,6 +76,8 @@ export default {
   .cards_container {
     display: flex;
     flex-wrap: wrap;
+    gap: 20px 30px;
+    padding: 30px;
   }
 }
 </style>
