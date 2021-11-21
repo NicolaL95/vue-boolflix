@@ -1,47 +1,29 @@
 <template>
   <div id="main_container">
-    <div
-      class="multimedia"
-      v-for="multimedia in multimedias"
-      :key="multimedia.id"
-    >
-      <div v-if="multimedia.genre == 'film'" class="movie_container">
-        <h1>FILM</h1>
-        <p class="title">{{ multimedia.title }}</p>
-        <p class="original_title">{{ multimedia.original_title }}</p>
-        <Flag :selCountry="multimedia.original_language" />
-        <p class="original_language">{{ multimedia.original_language }}</p>
-        <p class="vote_average">{{ multimedia.vote_average }}</p>
-        <img
-          :src="'https://image.tmdb.org/t/p/w342' + multimedia.backdrop_path"
-        />
-        <Star :votes="multimedia.vote_average"></Star>
-      </div>
-
-      <div v-else class="tv_container">
-        <h1>SERIE TV</h1>
-        <p class="name">{{ multimedia.title }}</p>
-        <p class="original_name">{{ multimedia.original_title }}</p>
-        <Flag :selCountry="multimedia.original_language" />
-        <p class="original_language">{{ multimedia.original_language }}</p>
-        <p class="vote_average">{{ multimedia.vote_average }}</p>
-        <img
-          :src="'https://image.tmdb.org/t/p/w342' + multimedia.backdrop_path"
-        />
-      </div>
+    <div class="cards_container">
+      <Cards
+        v-for="multimedia in multimedias"
+        :key="multimedia.id"
+        :genre="multimedia.genre"
+        :titleMovie="multimedia.title"
+        :titleMovieO="multimedia.original_title"
+        :country="multimedia.original_language"
+        :voteAverage="multimedia.vote_average"
+        :imgSrc="multimedia.backdrop_path"
+        :titleTv="multimedia.name"
+        :titleTvO="multimedia.original_name"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-/* import Header from "./Header.vue"; */
-import Flag from "./Flag.vue";
-import Star from "./Star.vue";
+import Cards from "./Cards.vue";
+Cards;
 export default {
   components: {
-    Flag,
-    Star,
+    Cards,
   },
   data() {
     return {
@@ -89,5 +71,10 @@ export default {
 <style lang="scss">
 #main_container {
   background-color: #434343;
+  min-height: calc(100vh - 54px);
+  .cards_container {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 </style>
