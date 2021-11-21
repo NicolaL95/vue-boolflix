@@ -13,6 +13,7 @@
         :titleTv="multimedia.name"
         :titleTvO="multimedia.original_name"
         :desc="multimedia.overview"
+        :multimediaId="multimedia.id"
       />
     </div>
   </div>
@@ -35,9 +36,7 @@ export default {
   watch: {
     /* get two Apis and merge them in an array  */
     getAPI: function (val) {
-      console.log(val);
       this.multimedias = [];
-      console.log("ciao");
       const API_URLF =
         "https://api.themoviedb.org/3/search/movie?api_key=fd4723f70e60dc27b6383adc8e7700ec&query=" +
         val;
