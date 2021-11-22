@@ -62,12 +62,14 @@ export default {
     },
     getGenre: function (val) {
       if (val != 0) {
+        console.log("1");
         this.multimedias.forEach((element, index) => {
           if (!element.genre_ids.includes(val)) {
             this.multimedias.splice(index, 1);
           }
         });
       } else {
+        console.log("2");
         this.multimedias = this.multimedias_all;
       }
     },
