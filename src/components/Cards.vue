@@ -157,11 +157,14 @@ export default {
 .multimedia_content {
   padding: 5px;
   color: white;
-  max-height: 192px;
-  overflow: overlay;
+
   width: 100%;
   p {
     margin: 0;
+  }
+  .desc {
+    max-height: 387px;
+    overflow: overlay;
   }
 
   span {
@@ -187,8 +190,8 @@ export default {
   }
 }
 
-.multimedia_content::-webkit-scrollbar {
-  border-radius: 10px;
+.desc::-webkit-scrollbar {
+  display: none;
 }
 
 /* HOVER */
@@ -226,5 +229,10 @@ export default {
 
 .inactive {
   display: none;
+}
+
+.cover {
+  min-height: 513px;
+  max-width: 342px;
 }
 </style>

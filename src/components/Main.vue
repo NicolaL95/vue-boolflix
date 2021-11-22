@@ -37,6 +37,7 @@ export default {
     /* get two Apis and merge them in an array  */
     getAPI: function (val) {
       this.multimedias = [];
+      this.multimedias_all = [];
       const API_URLF =
         "https://api.themoviedb.org/3/search/movie?api_key=fd4723f70e60dc27b6383adc8e7700ec&query=" +
         val;
@@ -48,23 +49,25 @@ export default {
         r[0].data.results.forEach((element) => {
           element.genre = "film";
           this.multimedias.push(element);
+          this.multimedias_all.push(element);
         });
         r[1].data.results.forEach((element) => {
           element.genre = "tv";
           this.multimedias.push(element);
+          this.multimedias_all.push(element);
         });
       });
-      this.multimedias_all = this.multimedias;
-      this.arraygetAll = false;
+      this.customQuery = "";
     },
     getGenre: function (val) {
-      this.multimedias = this.multimedias_all;
       if (val != 0) {
         this.multimedias.forEach((element, index) => {
           if (!element.genre_ids.includes(val)) {
             this.multimedias.splice(index, 1);
           }
         });
+      } else {
+        this.multimedias = this.multimedias_all;
       }
     },
   },
