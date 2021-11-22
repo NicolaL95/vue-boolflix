@@ -31,7 +31,6 @@ export default {
       customQuery: "",
       multimedias: [],
       multimedias_all: [],
-      selectGenre: "",
     };
   },
   watch: {
@@ -61,26 +60,25 @@ export default {
       this.customQuery = "";
     },
     getGenre: function (val) {
-      if (val != 0) {
-        console.log("1");
-        this.multimedias.forEach((element, index) => {
-          if (!element.genre_ids.includes(val)) {
-            this.multimedias.splice(index, 1);
-          }
-        });
-      } else {
-        console.log("2");
-        this.multimedias = this.multimedias_all;
+      this.multimedias = [];
+      for (let i = 0; i < this.multimedias_all.length; i++) {
+        this.multimedias.push(this.multimedias_all[i]);
+        if (val != 0) {
+          this.multimedias.forEach((element, index) => {
+            if (!element.genre_ids.includes(val)) {
+              this.multimedias.splice(index, 1);
+            }
+          });
+        }
       }
     },
   },
   props: {
     getAPI: String,
-    getGenre: Number,
+    getGenre: String,
   },
   mounted() {
     this.customQuery = this.getAPI;
-    this.selectGenre = this.getGenre;
   },
   methods: {},
 };

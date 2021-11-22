@@ -15,7 +15,7 @@
         placeholder="All"
         @change="$emit('find', selectGenre)"
       >
-        <option :value="allgenre">All</option>
+        <option value="0">All</option>
         <option v-for="genre in gerneList" :key="genre.id" :value="genre.id">
           {{ genre.name }}
         </option>
@@ -31,7 +31,6 @@ export default {
       customQuery: "",
       gerneList: [],
       selectGenre: 0,
-      allgenre: 0,
     };
   },
   mounted() {
