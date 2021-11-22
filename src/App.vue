@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header @getQuery="passQuery"></Header>
-    <Main :getAPI="obtainQuery"></Main>
+    <Header @getQuery="passQuery" @find="getGenre"></Header>
+    <Main :getAPI="obtainQuery" :getGenre="selGen"></Main>
   </div>
 </template>
 
@@ -17,11 +17,15 @@ export default {
   data() {
     return {
       obtainQuery: "",
+      selGen: "",
     };
   },
   methods: {
     passQuery(query) {
       this.obtainQuery = query;
+    },
+    getGenre(gen) {
+      this.selGen = gen;
     },
   },
 };

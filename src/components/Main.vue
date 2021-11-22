@@ -9,7 +9,7 @@
         :titleMovieO="multimedia.original_title"
         :country="multimedia.original_language"
         :voteAverage="multimedia.vote_average"
-        :imgSrc="multimedia.backdrop_path"
+        :imgSrc="multimedia.poster_path"
         :titleTv="multimedia.name"
         :titleTvO="multimedia.original_name"
         :desc="multimedia.overview"
@@ -22,7 +22,6 @@
 <script>
 import axios from "axios";
 import Cards from "./Cards.vue";
-Cards;
 export default {
   components: {
     Cards,
@@ -31,6 +30,7 @@ export default {
     return {
       customQuery: "",
       multimedias: [],
+      multimedias_all: [],
     };
   },
   watch: {
@@ -54,12 +54,23 @@ export default {
           this.multimedias.push(element);
         });
       });
-      console.log(this.multimedias);
-      //call your method here
+      this.multimedias_all = this.multimedias;
+      this.arraygetAll = false;
+    },
+    getGenre: function (val) {
+      this.multimedias = this.multimedias_all;
+      if (val != 0) {
+        this.multimedias.forEach((element, index) => {
+          if (!element.genre_ids.includes(val)) {
+            this.multimedias.splice(index, 1);
+          }
+        });
+      }
     },
   },
   props: {
     getAPI: String,
+    getGenre: Number,
   },
   mounted() {
     this.customQuery = this.getAPI;

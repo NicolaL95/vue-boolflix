@@ -126,7 +126,12 @@ export default {
   methods: {
     getActors(id) {
       this.aActors = [];
-      const actorAPI = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=fd4723f70e60dc27b6383adc8e7700ec`;
+      let actorAPI;
+      if (this.genre == "film") {
+        actorAPI = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=fd4723f70e60dc27b6383adc8e7700ec`;
+      } else {
+        actorAPI = `https://api.themoviedb.org/3/tv/${id}/credits?api_key=fd4723f70e60dc27b6383adc8e7700ec`;
+      }
       axios.get(actorAPI).then((r) => {
         this.aActors = r.data.cast;
         this.aActors.length = 5;

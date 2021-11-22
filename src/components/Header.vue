@@ -7,20 +7,46 @@
         type="text"
         @keyup.enter="$emit('getQuery', customQuery), cleanInput()"
       />
+      <label for="genre">Genere:</label>
+      <select
+        name="fil_gen"
+        id="#filter_genre"
+        v-model="selectGenre"
+        placeholder="All"
+        @change="$emit('find', selectGenre)"
+      >
+        <option :value="allgenre">All</option>
+        <option v-for="genre in gerneList" :key="genre.id" :value="genre.id">
+          {{ genre.name }}
+        </option>
+      </select>
     </div>
   </div>
 </template>
-
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
       customQuery: "",
+      gerneList: [],
+      selectGenre: 0,
+      allgenre: 0,
     };
   },
+  mounted() {
+    const genAPI =
+      "https://api.themoviedb.org/3/genre/movie/list?api_key=fd4723f70e60dc27b6383adc8e7700ec";
+    axios.get(genAPI).then((r) => {
+      this.gerneList = r.data.genres;
+      console.log("questo", this.gerneList);
+    });
+  },
+
   methods: {
     cleanInput() {
       this.customQuery = "";
+      this.selectGenre = 0;
     },
   },
 };
