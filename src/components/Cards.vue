@@ -6,7 +6,7 @@
         v-if="imgSrc != null"
         :src="'https://image.tmdb.org/t/p/w342' + imgSrc"
       />
-      <img class="cover" v-else src="../assets/not-found.jpg" alt="" />
+      <img class="cover" v-else src="../assets/not-found.png" alt="" />
       <div class="multimedia_content">
         <div :class="{ inactive: isActor }" class="isOverview">
           <p class="title"><span>Titolo:</span> {{ titleMovie }}</p>
@@ -53,7 +53,7 @@
         v-if="imgSrc != null"
         :src="'https://image.tmdb.org/t/p/w342' + imgSrc"
       />
-      <img class="cover" v-else src="../assets/not-found.jpg" alt="" />
+      <img class="cover" v-else src="../assets/not-found.png" alt="" />
       <div class="multimedia_content">
         <div :class="{ inactive: isActor }" class="isOverview">
           <p class="title"><span>Titolo:</span> {{ titleTv }}</p>
