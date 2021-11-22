@@ -134,7 +134,10 @@ export default {
       }
       axios.get(actorAPI).then((r) => {
         this.aActors = r.data.cast;
-        this.aActors.length = 5;
+        if (this.aActors.length > 5) {
+          this.aActors.length = 5;
+        }
+
         this.isActor = true;
       });
     },
@@ -149,6 +152,7 @@ export default {
 .cards {
   border: 1px solid white;
   position: relative;
+  max-height: 515px;
   .multimedia_content {
     display: none;
   }
@@ -232,7 +236,7 @@ export default {
 }
 
 .cover {
-  min-height: 513px;
-  max-width: 342px;
+  height: 513px;
+  width: 342px;
 }
 </style>
