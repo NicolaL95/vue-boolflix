@@ -15,7 +15,7 @@
         placeholder="All"
         @change="$emit('find', selectGenre)"
       >
-        <option value="0">All</option>
+        <option :value="selectGenre">All</option>
         <option v-for="genre in gerneList" :key="genre.id" :value="genre.id">
           {{ genre.name }}
         </option>

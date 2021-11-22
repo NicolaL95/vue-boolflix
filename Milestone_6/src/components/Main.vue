@@ -75,7 +75,7 @@ export default {
   },
   props: {
     getAPI: String,
-    getGenre: String,
+    getGenre: Number,
   },
   mounted() {
     this.customQuery = this.getAPI;
