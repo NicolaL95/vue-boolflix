@@ -15,12 +15,11 @@ export default {
   },
   computed: {
     isFlag() {
+      /* Check in flag folder if value of country returns a specific flag(value - name.png) if not, return a placeholder img */
       const flagList = require.context("../assets/flag", true, /^.*\.png$/);
       if (flagList.keys().includes(`./${this.selCountry}.png`)) {
-        console.log("torna fra");
         return this.selCountry;
       } else {
-        console.log("non torna fra");
         return "placeholder";
       }
     },

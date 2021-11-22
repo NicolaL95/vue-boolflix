@@ -17,6 +17,7 @@ export default {
     votes: Number,
   },
   mounted() {
+    /* Generate star full&empty based on vote_average */
     this.convStar = Math.ceil(this.votes / 2);
     this.leftStar = 5 - this.convStar;
   },

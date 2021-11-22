@@ -31,6 +31,7 @@ export default {
       customQuery: "",
       multimedias: [],
       multimedias_all: [],
+      selectGenre: "",
     };
   },
   watch: {
@@ -77,6 +78,7 @@ export default {
   },
   mounted() {
     this.customQuery = this.getAPI;
+    this.selectGenre = this.getGenre;
   },
   methods: {},
 };

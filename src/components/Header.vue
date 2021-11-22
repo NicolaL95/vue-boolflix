@@ -39,7 +39,6 @@ export default {
       "https://api.themoviedb.org/3/genre/movie/list?api_key=fd4723f70e60dc27b6383adc8e7700ec";
     axios.get(genAPI).then((r) => {
       this.gerneList = r.data.genres;
-      console.log("questo", this.gerneList);
     });
   },
 
@@ -64,9 +63,14 @@ export default {
     font-size: 1.5rem;
     margin: 10px 0 5px;
   }
+
   .input {
     height: 25px;
     margin: 10px 0 5px;
+    label {
+      margin: 0 10px 0 20px;
+      color: white;
+    }
   }
 }
 </style>

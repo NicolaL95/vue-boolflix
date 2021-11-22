@@ -1,6 +1,8 @@
 <template>
   <div class="cards">
+    <!-- Container for movie -->
     <div v-if="genre == 'film'" class="movie_container">
+      <!-- check if imgSrc is NaN, else use a placeholder img -->
       <img
         class="cover"
         v-if="imgSrc != null"
@@ -8,6 +10,7 @@
       />
       <img class="cover" v-else src="../assets/not-found.png" alt="" />
       <div class="multimedia_content">
+        <!-- Button switch to select overview page or actor page -->
         <div :class="{ inactive: isActor }" class="isOverview">
           <p class="title"><span>Titolo:</span> {{ titleMovie }}</p>
           <p class="original_title">
@@ -47,6 +50,7 @@
         </div>
       </div>
     </div>
+    <!-- Container for tv-series -->
     <div v-else class="tv_container">
       <img
         class="cover"
@@ -124,6 +128,7 @@ export default {
     multimediaId: Number,
   },
   methods: {
+    /* Get 1st five cast actors based on movie id */
     getActors(id) {
       this.aActors = [];
       let actorAPI;
@@ -194,7 +199,17 @@ export default {
   }
 }
 
-.desc::-webkit-scrollbar {
+.cover {
+  height: 513px;
+  width: 342px;
+}
+
+.actors {
+  margin-left: 85px;
+
+  margin-top: 5px;
+}
+.isActors {
   display: none;
 }
 
@@ -219,14 +234,8 @@ export default {
   padding: 0 13px;
 }
 
-.actors {
-  margin-left: 85px;
+/* Display Switch */
 
-  margin-top: 5px;
-}
-.isActors {
-  display: none;
-}
 .active {
   display: block;
 }
@@ -235,8 +244,7 @@ export default {
   display: none;
 }
 
-.cover {
-  height: 513px;
-  width: 342px;
+.desc::-webkit-scrollbar {
+  display: none;
 }
 </style>
