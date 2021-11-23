@@ -80,7 +80,6 @@ export default {
   mounted() {
     this.customQuery = this.getAPI;
   },
-  methods: {},
 };
 </script>
 
